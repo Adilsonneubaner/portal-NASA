@@ -1,0 +1,10 @@
+:root{
+    --color1: #00070D;
+    --color2: #011126;
+    --color3: #011C40;
+    --color4: #57d6f2; 
+    --color5: #FFFFFF;
+}
+header{
+    color: var(--color5);
+}

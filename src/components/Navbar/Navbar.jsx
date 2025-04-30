@@ -1,32 +1,52 @@
 import './Navbar.css'
 
+import {useRef, useState} from 'react'
+
+// Images
+import photoDay from '../../images/foto-do-dia.png'
+import photoMars from '../../images/foto-de-marte.jpg'
+import asteroids from '../../images/asteroides.jpg'
+import techonologies from '../../images/tecnologias.jpg'
+import exoplanets from '../../images/exoplanetas.jpg'
+import imageBank from '../../images/banco-de-imagens.webp'
+
 // Swiper
 import {Swiper, SwiperSlide} from 'swiper/react'
+import 'swiper/css'
 import {Pagination} from 'swiper/modules'
 
 // Router 
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
 
   const slides = [
-    {id: 1, img: '', description: ''},
-    {id: 2, img: '', description: ''},
-    {id: 3, img: '', description: ''},
-    {id: 4, img: '', description: ''},
-    {id: 5, img: '', description: ''},
-    {id: 6, img: '', description: ''},
-    {id: 7, img: '', description: ''}
+    {id: 1, img: photoDay, description: 'Uma sessão onde você pode ver todo dia uma foto astronómica nova, capturada pela NASA', link: '/photo-of-the-day', name: 'Foto do dia', idCSS: 'photo-day'},
+
+    {id: 2, img: photoMars, description: 'Veja as fotos tiradas pelos rovers Curiosity, Opportunity, e Spirit em Marte', link: '/photos-of-mars', name: 'Fotos de Marte', idCSS: 'photo-mars'},
+
+    {id: 3, img: asteroids, description: 'Dados sobre asteroides próximos à Terra', link: '/asteroids', name: 'Asteroides próximos', idCSS: 'asteroids'},
+
+    {id: 4, img: techonologies, description: 'Conheça as tecnologias criadas pela NASA e liberadas para uso público', link: '/technologies', name: 'Tecnologias liberadas', idCSS: 'techonologies'},
+
+    {id: 5, img: exoplanets, description: 'Dados sobre planetas fora do sistema solar', link: '/exoplanets', name: 'Exoplanetas', idCSS: 'exoplanets'},
+
+    {id: 6, img: imageBank, description: 'Busque e veja imagens, vídeos e áudios do banco de dados da NASA', link: '/image-bank', name: 'Banco de imagens', idCSS: 'image-bank'}
   ]
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
 
   return (
     <header>
-      <div>
-        <h1>Portal NASA</h1>
+      <div id='container-title'>
+        <NavLink id='title' to='/'>Portal <span id='nasa'>NASA</span></NavLink>
       </div>
 
       <div>
         <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
           pagination={{
             el: '.pagination-links',
             clickable:true
@@ -34,12 +54,13 @@ const Navbar = () => {
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <div>
-                <img src={slide.img}/>
-              </div>
-
-              <div>
-                <p>{slide.description}</p>
+              <div className="background-slide" id={slide.idCSS} style={{
+                backgroundImage: `url(${slide.img})`
+              }}>
+                <div className="slide">
+                  <p>{slide.description}</p>
+                  <Link to={`/${slide.link}`}>Ver aqui</Link>
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -47,29 +68,14 @@ const Navbar = () => {
 
         <nav className='pagination-links'>
           <ul>
-            <li>
-              <NavLink to='/photo-of-the-day'>Foto do dia</NavLink>
-            </li>
-            
-            <li>
-              <NavLink to='/photos-of-mars'>Fotos de Marte</NavLink>
-            </li>
-
-            <li>
-              <NavLink to='/asteroids'>Asteroides próximos da Terra</NavLink>
-            </li>
-
-            <li>
-              <NavLink to='/technologies'>Tecnologias liberadas para o público</NavLink>
-            </li>
-
-            <li>
-              <NavLink to='/exoplanets'>Exoplanetas</NavLink>
-            </li>
-
-            <li>
-              <NavLink to='/image-bank'>Banco de imagens</NavLink>
-            </li>
+            {slides.map((slide, index) => (
+              <li 
+              key={slide.id}
+              onClick={() => swiperRef.current?.slideTo(index)}
+              className={`pagination ${index === activeIndex? 'pagination-active' : ''}`}>
+                {slide.name}
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
