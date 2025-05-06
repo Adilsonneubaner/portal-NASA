@@ -11,7 +11,10 @@
 }
 #nasa{
     font-weight: 800;
-    color: #39A0ED;
+    background: url('../../images/fundo-texto.png') center no-repeat;
+    background-size: cover;
+    color: transparent;
+    background-clip: text;
 }
 .background-slide{
     height: 60vh;
@@ -49,6 +52,7 @@
     padding: 15px 0;
     font-weight: 500;
     font-size: .83em;
+    cursor: pointer;
 }
 .pagination-active{
     font-weight: 700;
