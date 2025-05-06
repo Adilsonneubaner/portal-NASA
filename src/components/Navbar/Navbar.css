@@ -11,6 +11,7 @@
 }
 #nasa{
     font-weight: 800;
+    color: #39A0ED;
 }
 .background-slide{
     height: 60vh;
@@ -37,18 +38,6 @@
     padding: 10px;
     font-weight: 500;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.726);
-}
-.slide a{
-    text-decoration: none;
-    color: var(--color5);
-    background-color: transparent;
-    border: 1px solid var(--color5);
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: .8s;
-}
-.slide a:hover{
-    background-color: var(--color1);
 }
 .pagination-links ul{
     background-color: var(--color1);

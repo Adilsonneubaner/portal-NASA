@@ -5,3 +5,22 @@
     list-style: none;
     font-family: "Golos Text", sans-serif;;
 }
+.buttons{
+    text-decoration: none;
+    color: var(--color5);
+    background-color: transparent;
+    border: 1px solid var(--color5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: .8s;
+}
+.buttons:hover{
+    background-color: var(--color1);
+}
+.text-links{
+    text-decoration: none;
+    transition: .5s;
+}
+.text-links:hover{
+    text-decoration: underline;
+}

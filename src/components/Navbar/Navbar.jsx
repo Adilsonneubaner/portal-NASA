@@ -16,7 +16,7 @@ import 'swiper/css'
 import {Pagination} from 'swiper/modules'
 
 // Router 
-import { Link, NavLink } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <header>
       <div id='container-title'>
-        <NavLink id='title' to='/'>Portal <span id='nasa'>NASA</span></NavLink>
+        <Link id='title' to='/'>Portal <span id='nasa'>NASA</span></Link>
       </div>
 
       <div>
@@ -59,7 +59,7 @@ const Navbar = () => {
               }}>
                 <div className="slide">
                   <p>{slide.description}</p>
-                  <Link to={`/${slide.link}`}>Ver aqui</Link>
+                  <Link to={`/${slide.link}`} className='buttons'>Ver aqui</Link>
                 </div>
               </div>
             </SwiperSlide>

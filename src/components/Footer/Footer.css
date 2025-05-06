@@ -1,0 +1,65 @@
+footer{
+    background-color: var(--color1);
+    padding: 50px;
+}
+#container-link-site-nasa{
+    text-align: center;
+}
+#link-site-nasa{
+    color: white;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+#apis-information{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px 0;
+}
+#documentation{
+    color: white;
+    font-size: 1.08em;
+    display: block;
+    text-align: end;
+    width: 306.61px;
+}
+#apis-list{
+    color: white;
+    font-size: 1.08em;
+    margin-bottom: 10px;
+}
+.apis{
+    color: white;
+    opacity: .5;
+    font-size: .8em;
+    margin-top: 2px;
+}
+#creator{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+#contact-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#contact-links a{
+    font-size: 1.3em;
+    color: white;
+    opacity: .5;
+    transition: .4s;
+}
+#contact-links a:hover{
+    font-size: 1.4em;
+    color: var(--color4);
+    opacity: 10;
+}
+#copy{
+    font-size: .7em;
+    display: flex;
+    align-items: center;
+    color: white;
+    opacity: .5;
+}
