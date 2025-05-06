@@ -54,30 +54,36 @@ const Navbar = () => {
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.id}>
+
               <div className="background-slide" id={slide.idCSS} style={{
                 backgroundImage: `url(${slide.img})`
               }}>
+
                 <div className="slide">
+
                   <p>{slide.description}</p>
-                  <Link to={`/${slide.link}`} className='buttons'>Ver aqui</Link>
+                  <Link to={`${slide.link}`} className='buttons'>Ver aqui</Link>
+
                 </div>
+
               </div>
+
             </SwiperSlide>
           ))}
         </Swiper>
 
-        <nav className='pagination-links'>
-          <ul>
-            {slides.map((slide, index) => (
-              <li 
-              key={slide.id}
-              onClick={() => swiperRef.current?.slideTo(index)}
-              className={`pagination ${index === activeIndex? 'pagination-active' : ''}`}>
-                {slide.name}
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <div>
+            <ul className='pagination-links'>
+              {slides.map((slide, index) => (
+                <li
+                key={slide.id}
+                onClick={() => swiperRef.current?.slideTo(index)}
+                className={`pagination ${index === activeIndex? 'pagination-active' : ''}`}>
+                  {slide.name}
+                </li>
+              ))}
+            </ul>
+          </div>
       </div>
     </header>
   )
