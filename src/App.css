@@ -8,3 +8,6 @@
 header{
     color: var(--color5);
 }
+main{
+    min-height: 70vh;
+}
