@@ -11,7 +11,7 @@ export const useGet = (url) => {
           setData(data)
         }
         fetchData()
-    },[url])
+    },[])
 
     return {data}
 }
