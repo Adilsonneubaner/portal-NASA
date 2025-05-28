@@ -1,0 +1,27 @@
+.container-photo{
+    max-width: 700px;
+}
+.photo-title{
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--color3);
+}
+.photo-of-the-day{
+    max-width: 100%;
+}
+.photo-data{
+    display: flex;
+    justify-content: space-between;
+}
+.photo-data p{
+    font-size: .75em;
+    opacity: .5;
+}
+.about-photo{
+    margin-top: 10px;
+    font-size: .99em;
+    line-height: 1.44em;
+    font-weight: 450;
+    color: var(--color1);
+}

@@ -47,22 +47,22 @@ const Footer = () => {
             <ul id='contact-links'>
                 <li>
                     <Link to="https://wa.me/553398214909" target='_blank'>
-                        <i class="bi bi-whatsapp"></i>
+                        <i className="bi bi-whatsapp"></i>
                     </Link>
                 </li>
                 <li>
                     <Link to="mailto:juniorneubaner@gmail.com" target='_blank'>
-                        <i class="bi bi-envelope-fill"></i>
+                        <i className="bi bi-envelope-fill"></i>
                     </Link>
                 </li>
                 <li>
                     <Link to="https://www.linkedin.com/in/adilsonneubaner/" target='_blank'>
-                        <i class="bi bi-linkedin"></i>
+                        <i className="bi bi-linkedin"></i>
                     </Link>
                 </li>
                 <li>
                     <Link to="https://github.com/Adilsonneubaner" target='_blank'>
-                        <i class="bi bi-github"></i>
+                        <i className="bi bi-github"></i>
                     </Link>
                 </li>
             </ul>

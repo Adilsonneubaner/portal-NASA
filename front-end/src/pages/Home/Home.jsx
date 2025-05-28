@@ -5,7 +5,7 @@ import nasa from '../../images/logo-nasa.jpg'
 const Home = () => {
   return (
     <main>
-      <div className="container-home">
+      <div className="container-content">
         <h1>DESLUMBRE O UNIVERSO E SUAS MARAVILHAS</h1>
         <div className="content-home">
           <div className="paragraph-home">
