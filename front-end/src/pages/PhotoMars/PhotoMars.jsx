@@ -17,77 +17,123 @@ const PhotoMars = () => {
   return (
     <main>
       <div className="container-content margin-containers">
-          <div className="container-rovers">
-              <form>
-                <div className="rovers-box">
-                  Curiosity
-                  <input type="radio" name="rovers" id="curiosity" />
-                </div>
-
-                <div className="rovers-box">
-                  Opportunity
-                  <input type="radio" name="rovers" id="opportunity" />
-                </div>
-
-                <div className="rovers-box">
-                  Spirit
-                  <input type="radio" name="rovers" id="spirit" />
-                </div>
-              </form>
+        <form className="container-rovers">
+          <div className="rovers-box" id="curiosity">
+            Curiosity
+            <input type="radio" name="rovers" />
           </div>
 
-          <div className="rovers-data">
-            <div id="curiosity-data">
-              <p>Dados sobre</p>
-              <p>Data de lançamento</p>
-              <p>Data de pouso</p>
-              <p>Status</p>
-              <p>Data das últimas fotos</p>
-              <p>Fotos já tiradas</p>
-
-              <form onSubmit={handleCuriosity}>
-                <label>
-                  Busque fotos por uma data
-                  <input type="date" id="" />
-                </label>
-                <button type='submit'>Veja fotos</button>
-              </form>
-            </div>
-
-            <div id="opportunity-data">
-              <p>Dados sobre</p>
-              <p>Data de lançamento</p>
-              <p>Data de pouso</p>
-              <p>Status</p>
-              <p>Data das últimas fotos</p>
-              <p>Fotos já tiradas</p>
-
-              <form onSubmit={handleOpportunity}>
-                <label>
-                  Busque fotos por uma data
-                  <input type="date" id="" />
-                </label>
-                <button type='submit'>Veja fotos</button>
-              </form>
-            </div>
-          
-            <div id="spirit-data">
-              <p>Dados sobre</p>
-              <p>Data de lançamento</p>
-              <p>Data de pouso</p>
-              <p>Status</p>
-              <p>Data das últimas fotos</p>
-              <p>Fotos já tiradas</p>
-
-              <form onSubmit={handleSpirit}>
-                <label>
-                  Busque fotos por uma data
-                  <input type="date" id="" />
-                </label>
-                <button type='submit'>Veja fotos</button>
-              </form>
-            </div>
+          <div className="rovers-box" id="opportunity" >
+            Opportunity
+            <input type="radio" name="rovers"/>
           </div>
+
+          <div className="rovers-box" id="spirit" >
+            Spirit
+            <input type="radio" name="rovers"/>
+          </div>
+        </form>
+
+        <div className="rovers-data">
+          <div id="curiosity-data">
+            <h2>Dados sobre</h2>
+
+            <p className="rovers-information">Data de lançamento 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Data de pouso
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Status 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Data das últimas fotos 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Fotos já tiradas 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <form onSubmit={handleCuriosity} className='form-calendar'>
+              <p className="search-date">Busque fotos por uma data</p>
+              <div className="calendar">
+                <input type="date" id="" />
+                <i className="bi bi-calendar"></i>
+              </div>
+              <button type='submit' className="button-submit">Veja fotos</button>
+            </form>
+          </div>
+
+          <div id="opportunity-data">
+            <h2>Dados sobre</h2>
+
+            <p className="rovers-information">Data de lançamento 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Data de pouso
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Status 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Data das últimas fotos 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Fotos já tiradas 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <form onSubmit={handleOpportunity} className='form-calendar'>
+              <p className="search-date">Busque fotos por uma data</p>
+              <div className="calendar">
+                <input type="date" id="" />
+                <i className="bi bi-calendar"></i>
+              </div>
+              <button type='submit' className="button-submit">Veja fotos</button>
+            </form>
+          </div>
+        
+          <div id="spirit-data">
+            <h2>Dados sobre</h2>
+
+            <p className="rovers-information">Data de lançamento 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Data de pouso
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Status 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Data das últimas fotos 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <p className="rovers-information">Fotos já tiradas 
+              <span className="rover-information-span"> xxx</span>
+            </p>
+
+            <form onSubmit={handleSpirit} className='form-calendar'>
+              <p className="search-date">Busque fotos por uma data</p>
+              <div className="calendar">
+                <input type="date" id="" />
+                <i className="bi bi-calendar"></i>
+              </div>
+              <button type='submit' className="button-submit">Veja fotos</button>
+            </form>
+          </div>
+        </div>
       </div>
     </main>
   )
