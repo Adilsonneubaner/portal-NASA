@@ -1,17 +1,51 @@
 import './PhotoMars.css'
 
+// Hooks
+import {useGet} from '../../hooks/useGet'
+import { useState } from 'react'
+import { useTranslate } from '../../hooks/useTranslate'
+
 const PhotoMars = () => {
 
-  const handleCuriosity = (e) => {
-    e.preventDefault()
+  const api_key_nasa = 'XdPKGfLWgyAVR6bvL6vDO6etSOec8xJknUoehHmK'
+
+  const urlManifestCuriosity = `https://api.nasa.gov/mars-photos/api/v1/manifests/Curiosity?api_key=${api_key_nasa}`
+
+  const urlManifestOpportunity = `https://api.nasa.gov/mars-photos/api/v1/manifests/Opportunity?api_key=${api_key_nasa}`
+
+  const urlManifestSpirit = `https://api.nasa.gov/mars-photos/api/v1/manifests/Spirit?api_key=${api_key_nasa}`
+
+  const {data: manifestCuriosity} = useGet(urlManifestCuriosity)
+  const {data: manifestOpportunity} = useGet(urlManifestOpportunity)
+  const {data: manifestSpirit} = useGet(urlManifestSpirit)
+
+  const {translation: translationCuriosity} = useTranslate(manifestCuriosity? [manifestCuriosity.photo_manifest.status] : null)
+  const {translation: translationOpportunity} = useTranslate(manifestOpportunity? [manifestOpportunity.photo_manifest.status] : null)
+  const {translation: translationSpirit} = useTranslate(manifestSpirit? [manifestSpirit.photo_manifest.status] : null)
+
+  const [selected, setSelected] = useState('')
+  const [date, setDate] = useState('')
+  const [photos, setPhotos] = useState('')
+
+  const handleSelected = (e) => {
+    setSelected(e.target.value)
   }
 
-  const handleOpportunity = (e) => {
+  const handlePhotos = async (e, rover) => {
     e.preventDefault()
-  }
 
-  const handleSpirit = (e) => {
-    e.preventDefault()
+    if(!date){
+      window.alert('voce tem que escolher uma data')
+      
+    } else{
+      const urlPhotosMars = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=${api_key_nasa}`
+
+      const res = await fetch(urlPhotosMars)
+
+      const data = await (res).json()
+
+      setPhotos(data.photos)
+    }
   }
 
   return (
@@ -20,119 +54,155 @@ const PhotoMars = () => {
         <form className="container-rovers">
           <div className="rovers-box" id="curiosity">
             Curiosity
-            <input type="radio" name="rovers" />
+            <input type="radio" name="rovers" value="curiosity" checked={selected === "curiosity"} onChange={handleSelected}/>
           </div>
 
           <div className="rovers-box" id="opportunity" >
             Opportunity
-            <input type="radio" name="rovers"/>
+            <input type="radio" name="rovers" value="opportunity" checked={selected === "opportunity"} onChange={handleSelected}/>
           </div>
 
           <div className="rovers-box" id="spirit" >
             Spirit
-            <input type="radio" name="rovers"/>
+            <input type="radio" name="rovers" value="spirit" checked={selected === "spirit"} onChange={handleSelected}/>
           </div>
         </form>
 
         <div className="rovers-data">
-          <div id="curiosity-data">
-            <h2>Dados sobre</h2>
+          {manifestCuriosity && translationCuriosity && (
+            <>
+              {selected === 'curiosity' && (
+                <>
+                  <h2>{manifestCuriosity.photo_manifest.name}</h2>
+                  <div className="data-form">
 
-            <p className="rovers-information">Data de lançamento 
-              <span className="rover-information-span"> xxx</span>
-            </p>
+                    <div className="rovers-information-container">
+                      <p className="rovers-information">Data de lançamento
+                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.launch_date}</span>
+                      </p>
+                      <p className="rovers-information">Data de pouso
+                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.landing_date}</span>
+                      </p>
+                      <p className="rovers-information">Status
+                        <span className="rover-information-span"> {translationCuriosity.translations[0].text}</span>
+                      </p>
+                      <p className="rovers-information">Data das últimas fotos
+                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.max_date}</span>
+                      </p>
+                      <p className="rovers-information">Fotos já tiradas
+                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.total_photos}</span>
+                      </p>
+                    </div>
 
-            <p className="rovers-information">Data de pouso
-              <span className="rover-information-span"> xxx</span>
-            </p>
+                    <form onSubmit={(e) => handlePhotos(e, 'curiosity')} className='form-calendar'>
+                      <p className="search-date">Busque fotos por uma data</p>
+                      <div className="calendar">
+                        <input type="date" id="" onChange={(e) => setDate(e.target.value)}/>
+                        <i className="bi bi-calendar"></i>
+                      </div>
+                      <button type='submit' className="button-submit">Veja fotos</button>
+                    </form>
+                  </div>
+                </>
+              )}
+            </>
+          )}
 
-            <p className="rovers-information">Status 
-              <span className="rover-information-span"> xxx</span>
-            </p>
+          {manifestOpportunity && translationOpportunity && (
+            <>
+              {selected === 'opportunity' && (
+                <>
+                  <h2>{manifestOpportunity.photo_manifest.name}</h2>
+                  <div className="data-form">
 
-            <p className="rovers-information">Data das últimas fotos 
-              <span className="rover-information-span"> xxx</span>
-            </p>
+                    <div className="rovers-information-container">
+                      <p className="rovers-information">Data de lançamento
+                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.launch_date}</span>
+                      </p>
+                      <p className="rovers-information">Data de pouso
+                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.landing_date}</span>
+                      </p>
+                      <p className="rovers-information">Status
+                        <span className="rover-information-span"> {translationOpportunity.translations[0].text}</span>
+                      </p>
+                      <p className="rovers-information">Data das últimas fotos
+                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.max_date}</span>
+                      </p>
+                      <p className="rovers-information">Fotos já tiradas
+                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.total_photos}</span>
+                      </p>
+                    </div>
 
-            <p className="rovers-information">Fotos já tiradas 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <form onSubmit={handleCuriosity} className='form-calendar'>
-              <p className="search-date">Busque fotos por uma data</p>
-              <div className="calendar">
-                <input type="date" id="" />
-                <i className="bi bi-calendar"></i>
-              </div>
-              <button type='submit' className="button-submit">Veja fotos</button>
-            </form>
-          </div>
-
-          <div id="opportunity-data">
-            <h2>Dados sobre</h2>
-
-            <p className="rovers-information">Data de lançamento 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <p className="rovers-information">Data de pouso
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <p className="rovers-information">Status 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <p className="rovers-information">Data das últimas fotos 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <p className="rovers-information">Fotos já tiradas 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <form onSubmit={handleOpportunity} className='form-calendar'>
-              <p className="search-date">Busque fotos por uma data</p>
-              <div className="calendar">
-                <input type="date" id="" />
-                <i className="bi bi-calendar"></i>
-              </div>
-              <button type='submit' className="button-submit">Veja fotos</button>
-            </form>
-          </div>
+                    <form onSubmit={(e) => handlePhotos(e, 'opportunity')} className='form-calendar'>
+                      <p className="search-date">Busque fotos por uma data</p>
+                      <div className="calendar">
+                        <input type="date" id="" onChange={(e) => setDate(e.target.value)}/>
+                        <i className="bi bi-calendar"></i>
+                      </div>
+                      <button type='submit' className="button-submit">Veja fotos</button>
+                    </form>
+                  </div>
+                </>
+              )}
+            </>
+          )}
         
-          <div id="spirit-data">
-            <h2>Dados sobre</h2>
+          {manifestSpirit && translationSpirit && (
+            <>
+              {selected === 'spirit' && (
+                <>
+                <h2>{manifestSpirit.photo_manifest.name}</h2>
+                <div className="data-form">
 
-            <p className="rovers-information">Data de lançamento 
-              <span className="rover-information-span"> xxx</span>
-            </p>
+                    <div className="rovers-information-container">
+                      <p className="rovers-information">Data de lançamento
+                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.launch_date}</span>
+                      </p>
+                      <p className="rovers-information">Data de pouso
+                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.landing_date}</span>
+                      </p>
+                      <p className="rovers-information">Status
+                        <span className="rover-information-span"> {translationSpirit.translations[0].text}</span>
+                      </p>
+                      <p className="rovers-information">Data das últimas fotos
+                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.max_date}</span>
+                      </p>
+                      <p className="rovers-information">Fotos já tiradas
+                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.total_photos}</span>
+                      </p>
+                    </div>
 
-            <p className="rovers-information">Data de pouso
-              <span className="rover-information-span"> xxx</span>
-            </p>
+                    <form onSubmit={(e) => handlePhotos(e, 'spirit')} className='form-calendar'>
+                      <p className="search-date">Busque fotos por uma data</p>
+                      <div className="calendar">
+                        <input type="date" id="" onChange={(e) => setDate(e.target.value)}/>
+                        <i className="bi bi-calendar"></i>
+                      </div>
+                      <button type='submit' className="button-submit">Veja fotos</button>
+                    </form>
+                  </div>
+                </>
+              )}
+            </>
+          )}
 
-            <p className="rovers-information">Status 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <p className="rovers-information">Data das últimas fotos 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <p className="rovers-information">Fotos já tiradas 
-              <span className="rover-information-span"> xxx</span>
-            </p>
-
-            <form onSubmit={handleSpirit} className='form-calendar'>
-              <p className="search-date">Busque fotos por uma data</p>
-              <div className="calendar">
-                <input type="date" id="" />
-                <i className="bi bi-calendar"></i>
-              </div>
-              <button type='submit' className="button-submit">Veja fotos</button>
-            </form>
-          </div>
+          {photos && (
+            <>
+              {photos[0].rover.name === "Opportunity" || photos[0].rover.name === "Spirit" ?
+              (
+                <div className="container-img-mars">
+                  <p className='no-photo'>Infelizmente as fotos desse rover não estão disponíveis no momento <i className="bi bi-emoji-frown"></i></p>
+                </div>
+              ) :
+              (
+                photos.map((photo) => (
+                   <div className="container-img-mars" key={photo.id}>
+                    <img src={photo.img_src}  className='img-mars'/>
+                  </div>
+                ))
+              )}
+            </>
+          )}
         </div>
       </div>
     </main>
