@@ -23,6 +23,7 @@ const PhotoToday = () => {
     null
   )
 
+
   return (
     <main>
       <div className="container-content margin-containers">

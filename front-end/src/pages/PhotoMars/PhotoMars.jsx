@@ -26,6 +26,7 @@ const PhotoMars = () => {
   const [selected, setSelected] = useState('')
   const [date, setDate] = useState('')
   const [photos, setPhotos] = useState('')
+  const [error, setError] = useState('')
 
   const handleSelected = (e) => {
     setSelected(e.target.value)
@@ -34,18 +35,32 @@ const PhotoMars = () => {
   const handlePhotos = async (e, rover) => {
     e.preventDefault()
 
+    setError('')
+
     if(!date){
-      window.alert('voce tem que escolher uma data')
-      
-    } else{
-      const urlPhotosMars = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=${api_key_nasa}`
-
-      const res = await fetch(urlPhotosMars)
-
-      const data = await (res).json()
-
-      setPhotos(data.photos)
+      setError('Você tem que escolher uma data')
+      return
     }
+    
+    if(rover === "opportunity" || rover === "spirit"){
+      setError('Infelizmente as fotos desse rover não estão disponíveis no momento!')
+      return
+    }
+
+    const urlPhotosMars = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=${api_key_nasa}`
+
+    const res = await fetch(urlPhotosMars)
+
+    const data = await (res).json()
+
+    if(data.photos.length === 0){
+      setError('Infelizmente não existem fotos desse rover para essa data, tente outra')
+    
+    } else{
+      const limitedPhotos = data.photos.slice(0, 10)
+      setPhotos(limitedPhotos)
+    }
+
   }
 
   return (
@@ -186,23 +201,17 @@ const PhotoMars = () => {
             </>
           )}
 
-          {photos && (
-            <>
-              {photos[0].rover.name === "Opportunity" || photos[0].rover.name === "Spirit" ?
-              (
-                <div className="container-img-mars">
-                  <p className='no-photo'>Infelizmente as fotos desse rover não estão disponíveis no momento <i className="bi bi-emoji-frown"></i></p>
-                </div>
-              ) :
-              (
-                photos.map((photo) => (
-                   <div className="container-img-mars" key={photo.id}>
-                    <img src={photo.img_src}  className='img-mars'/>
-                  </div>
-                ))
-              )}
-            </>
-          )}
+          {error && 
+            <div className="container-img-mars">
+              <p className='no-photo'>{error}</p>
+            </div>
+          }
+          
+          {!error && photos && photos.map((photo) => (
+            <div className="container-img-mars" key={photo.id}>
+              <img src={photo.img_src}  className='img-mars'/>
+            </div>
+          ))}
         </div>
       </div>
     </main>

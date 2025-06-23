@@ -3,8 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+// Context
+import { LoadingContextProvider } from './context/LoadingContext.jsx'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <LoadingContextProvider>
+      <App />
+    </LoadingContextProvider>
   </StrictMode>,
 )

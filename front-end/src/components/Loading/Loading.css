@@ -1,0 +1,11 @@
+.container-gif{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-gif img{
+    width: 40px;
+    height: 40px;
+}
