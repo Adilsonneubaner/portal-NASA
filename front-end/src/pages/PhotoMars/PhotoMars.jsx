@@ -2,11 +2,18 @@ import './PhotoMars.css'
 
 // Hooks
 import {useGet} from '../../hooks/useGet'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useTranslate } from '../../hooks/useTranslate'
 
-const PhotoMars = () => {
+// Context
+import { LoadingContext } from '../../context/LoadingContext'
 
+// Component
+import Loading from '../../components/Loading/Loading'
+
+const PhotoMars = () => {
+  const {loading, setLoading} = useContext(LoadingContext)
+  
   const api_key_nasa = 'XdPKGfLWgyAVR6bvL6vDO6etSOec8xJknUoehHmK'
 
   const urlManifestCuriosity = `https://api.nasa.gov/mars-photos/api/v1/manifests/Curiosity?api_key=${api_key_nasa}`
@@ -35,14 +42,20 @@ const PhotoMars = () => {
   const handlePhotos = async (e, rover) => {
     e.preventDefault()
 
+    setLoading(true)
+
     setError('')
 
     if(!date){
+      setLoading(false)
+
       setError('Você tem que escolher uma data')
       return
     }
     
     if(rover === "opportunity" || rover === "spirit"){
+      setLoading(false)
+
       setError('Infelizmente as fotos desse rover não estão disponíveis no momento!')
       return
     }
@@ -54,11 +67,15 @@ const PhotoMars = () => {
     const data = await (res).json()
 
     if(data.photos.length === 0){
+      setLoading(false)
+
       setError('Infelizmente não existem fotos desse rover para essa data, tente outra')
     
     } else{
       const limitedPhotos = data.photos.slice(0, 10)
       setPhotos(limitedPhotos)
+
+      setLoading(false)
     }
 
   }
@@ -201,13 +218,19 @@ const PhotoMars = () => {
             </>
           )}
 
+          {loading &&
+            <div className="container-img-mars">
+              <Loading></Loading>
+            </div>
+          }
+
           {error && 
             <div className="container-img-mars">
               <p className='no-photo'>{error}</p>
             </div>
           }
           
-          {!error && photos && photos.map((photo) => (
+          {!error && !loading && photos && photos.map((photo) => (
             <div className="container-img-mars" key={photo.id}>
               <img src={photo.img_src}  className='img-mars'/>
             </div>

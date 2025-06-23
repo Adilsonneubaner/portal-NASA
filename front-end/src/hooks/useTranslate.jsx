@@ -1,6 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+
+// Context
+import {LoadingContext} from '../context/LoadingContext'
 
 export const useTranslate = (text) => {
+    const {setLoading} = useContext(LoadingContext)
+
     const url_back_end = 'http://localhost:3000/translate'
 
     const [translation, setTranslation] = useState('')
@@ -25,6 +30,8 @@ export const useTranslate = (text) => {
             
             const data = await res.json()
             setTranslation(data)
+
+            setLoading(false)
 
           } catch (error) {
             console.log(error)
