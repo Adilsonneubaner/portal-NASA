@@ -4,6 +4,7 @@ import './PhotoToday.css'
 import { useGet } from '../../hooks/useGet'
 import { useTranslate } from '../../hooks/useTranslate'
 import { useContext } from 'react'
+import { useTranscribedDate } from '../../hooks/useTranscribedDate'
 
 // Context
 import {LoadingContext} from '../../context/LoadingContext'
@@ -27,6 +28,8 @@ const PhotoToday = () => {
 
   const {data: photo_data} = useGet(urlAPOD)
 
+  const {transcribedDate: photo_date} = useTranscribedDate(photo_data? photo_data.date : null)
+
   const {translation} = useTranslate(photo_data?
     [photo_data.title, photo_data.explanation] : 
     null
@@ -49,7 +52,7 @@ const PhotoToday = () => {
               <img src={photo_data.url} alt={photo_data.title} className='photo-of-the-day'/>
 
               <div className="photo-data">
-                <p>Foto de {photo_data.date}</p>
+                <p>Foto de {photo_date}</p>
                 <p>{photo_data.copyright}</p>
               </div>
 

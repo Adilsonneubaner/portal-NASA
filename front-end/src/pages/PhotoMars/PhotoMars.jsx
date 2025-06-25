@@ -4,6 +4,7 @@ import './PhotoMars.css'
 import {useGet} from '../../hooks/useGet'
 import { useContext, useState } from 'react'
 import { useTranslate } from '../../hooks/useTranslate'
+import { useTranscribedDate } from '../../hooks/useTranscribedDate'
 
 // Context
 import { LoadingContext } from '../../context/LoadingContext'
@@ -26,18 +27,47 @@ const PhotoMars = () => {
   const {data: manifestOpportunity} = useGet(urlManifestOpportunity)
   const {data: manifestSpirit} = useGet(urlManifestSpirit)
 
+
+  // Curiosity date transcribed
+  const {transcribedDate: curiosity_launch_date} = useTranscribedDate(manifestCuriosity ? manifestCuriosity.photo_manifest.launch_date : null)
+
+  const {transcribedDate: curiosity_landing_date} = useTranscribedDate(manifestCuriosity ? manifestCuriosity.photo_manifest.landing_date : null)
+
+  const {transcribedDate: curiosity_max_date} = useTranscribedDate(manifestCuriosity ? manifestCuriosity.photo_manifest.max_date : null)
+  
+  // Opportunity date transcribed
+  const {transcribedDate: opportunity_launch_date} = useTranscribedDate(manifestOpportunity ? manifestOpportunity.photo_manifest.launch_date : null)
+
+  const {transcribedDate: opportunity_landing_date} = useTranscribedDate(manifestOpportunity ? manifestOpportunity.photo_manifest.landing_date : null)
+
+  const {transcribedDate: opportunity_max_date} = useTranscribedDate(manifestOpportunity ? manifestOpportunity.photo_manifest.max_date : null)
+
+  // Spirit date transcribed
+  const {transcribedDate: spirit_launch_date} = useTranscribedDate(manifestSpirit ? manifestSpirit.photo_manifest.launch_date : null)
+
+  const {transcribedDate: spirit_landing_date} = useTranscribedDate(manifestSpirit ? manifestSpirit.photo_manifest.landing_date : null)
+
+  const {transcribedDate: spirit_max_date} = useTranscribedDate(manifestSpirit ? manifestSpirit.photo_manifest.max_date : null)
+
+
+  // Translations
   const {translation: translationCuriosity} = useTranslate(manifestCuriosity? [manifestCuriosity.photo_manifest.status] : null)
+
   const {translation: translationOpportunity} = useTranslate(manifestOpportunity? [manifestOpportunity.photo_manifest.status] : null)
+
   const {translation: translationSpirit} = useTranslate(manifestSpirit? [manifestSpirit.photo_manifest.status] : null)
+
 
   const [selected, setSelected] = useState('')
   const [date, setDate] = useState('')
   const [photos, setPhotos] = useState('')
   const [error, setError] = useState('')
 
+
   const handleSelected = (e) => {
     setSelected(e.target.value)
   }
+
 
   const handlePhotos = async (e, rover) => {
     e.preventDefault()
@@ -110,16 +140,16 @@ const PhotoMars = () => {
 
                     <div className="rovers-information-container">
                       <p className="rovers-information">Data de lançamento
-                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.launch_date}</span>
+                        <span className="rover-information-span"> {curiosity_launch_date}</span>
                       </p>
                       <p className="rovers-information">Data de pouso
-                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.landing_date}</span>
+                        <span className="rover-information-span"> {curiosity_landing_date}</span>
                       </p>
                       <p className="rovers-information">Status
                         <span className="rover-information-span"> {translationCuriosity.translations[0].text}</span>
                       </p>
                       <p className="rovers-information">Data das últimas fotos
-                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.max_date}</span>
+                        <span className="rover-information-span"> {curiosity_max_date}</span>
                       </p>
                       <p className="rovers-information">Fotos já tiradas
                         <span className="rover-information-span"> {manifestCuriosity.photo_manifest.total_photos}</span>
@@ -149,16 +179,16 @@ const PhotoMars = () => {
 
                     <div className="rovers-information-container">
                       <p className="rovers-information">Data de lançamento
-                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.launch_date}</span>
+                        <span className="rover-information-span"> {opportunity_launch_date}</span>
                       </p>
                       <p className="rovers-information">Data de pouso
-                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.landing_date}</span>
+                        <span className="rover-information-span"> {opportunity_landing_date}</span>
                       </p>
                       <p className="rovers-information">Status
                         <span className="rover-information-span"> {translationOpportunity.translations[0].text}</span>
                       </p>
                       <p className="rovers-information">Data das últimas fotos
-                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.max_date}</span>
+                        <span className="rover-information-span"> {opportunity_max_date}</span>
                       </p>
                       <p className="rovers-information">Fotos já tiradas
                         <span className="rover-information-span"> {manifestOpportunity.photo_manifest.total_photos}</span>
@@ -188,16 +218,16 @@ const PhotoMars = () => {
 
                     <div className="rovers-information-container">
                       <p className="rovers-information">Data de lançamento
-                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.launch_date}</span>
+                        <span className="rover-information-span"> {spirit_launch_date}</span>
                       </p>
                       <p className="rovers-information">Data de pouso
-                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.landing_date}</span>
+                        <span className="rover-information-span"> {spirit_landing_date}</span>
                       </p>
                       <p className="rovers-information">Status
                         <span className="rover-information-span"> {translationSpirit.translations[0].text}</span>
                       </p>
                       <p className="rovers-information">Data das últimas fotos
-                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.max_date}</span>
+                        <span className="rover-information-span"> {spirit_max_date}</span>
                       </p>
                       <p className="rovers-information">Fotos já tiradas
                         <span className="rover-information-span"> {manifestSpirit.photo_manifest.total_photos}</span>
