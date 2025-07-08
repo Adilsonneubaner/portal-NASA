@@ -31,13 +31,6 @@
 #spirit{
     background: url('../../images/spirit2.jpg') right center;
 }
-.rovers-box > input[type="radio"]{
-    all: unset;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
 .rovers-data{
     margin-top: 50px;
     width: 700px;
@@ -54,12 +47,7 @@
     align-items: center;
 }
 .rovers-information{
-   color: #777777;
    margin-top: 5px;
-}
-.rover-information-span{
-    color: var(--color3);
-    font-weight: 600;
 }
 .form-calendar{
     display: flex;
@@ -84,9 +72,9 @@ input[type="date"]{
 }
 ::-webkit-calendar-picker-indicator{
     font-size: 1.5em;
-   opacity: 0;
-   z-index: 1;
-   cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
 }
 .bi-calendar{
     position: absolute;

@@ -11,6 +11,13 @@ h1{
     color: var(--color3);
     margin-bottom: 70px;
 }
+input[type="radio"], input[type="checkbox"]{
+    all: unset;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 .buttons{
     text-decoration: none;
     color: var(--color5);
@@ -29,6 +36,13 @@ h1{
 }
 .text-links:hover{
     text-decoration: underline;
+}
+.color-text{
+    color: #777777;
+}
+.color-data{
+    color: var(--color3);
+    font-weight: 600;
 }
 .container-content{
     min-height: 70vh;

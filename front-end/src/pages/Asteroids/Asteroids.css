@@ -1,0 +1,30 @@
+.data-asteroids{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.asteroid{
+    width: 700px;
+}
+.drop-drown-asteroid{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #777777;
+    border-radius: 5px;
+    display: flex;justify-content: space-between;
+    padding: 5px 10px;
+}
+.asteroid-name{
+    font-weight: 500;
+}
+.content-asteroid{
+    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+.drop-drown-asteroid:has(input[type="checkbox"]:checked) ~ .content-asteroid{
+    display: flex;
+}

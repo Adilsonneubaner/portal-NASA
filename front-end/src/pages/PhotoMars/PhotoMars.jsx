@@ -139,20 +139,20 @@ const PhotoMars = () => {
                   <div className="data-form">
 
                     <div className="rovers-information-container">
-                      <p className="rovers-information">Data de lançamento
-                        <span className="rover-information-span"> {curiosity_launch_date}</span>
+                      <p className="rovers-information color-text">Data de lançamento
+                        <span className="color-data"> {curiosity_launch_date}</span>
                       </p>
-                      <p className="rovers-information">Data de pouso
-                        <span className="rover-information-span"> {curiosity_landing_date}</span>
+                      <p className="rovers-information color-text">Data de pouso
+                        <span className="color-data"> {curiosity_landing_date}</span>
                       </p>
-                      <p className="rovers-information">Status
-                        <span className="rover-information-span"> {translationCuriosity.translations[0].text}</span>
+                      <p className="rovers-information color-text">Status
+                        <span className="color-data"> {translationCuriosity.translations[0].text}</span>
                       </p>
-                      <p className="rovers-information">Data das últimas fotos
-                        <span className="rover-information-span"> {curiosity_max_date}</span>
+                      <p className="rovers-information color-text">Data das últimas fotos
+                        <span className="color-data"> {curiosity_max_date}</span>
                       </p>
-                      <p className="rovers-information">Fotos já tiradas
-                        <span className="rover-information-span"> {manifestCuriosity.photo_manifest.total_photos}</span>
+                      <p className="rovers-information color-text">Fotos já tiradas
+                        <span className="color-data"> {manifestCuriosity.photo_manifest.total_photos}</span>
                       </p>
                     </div>
 
@@ -178,20 +178,20 @@ const PhotoMars = () => {
                   <div className="data-form">
 
                     <div className="rovers-information-container">
-                      <p className="rovers-information">Data de lançamento
-                        <span className="rover-information-span"> {opportunity_launch_date}</span>
+                      <p className="rovers-information color-text">Data de lançamento
+                        <span className="color-data"> {opportunity_launch_date}</span>
                       </p>
-                      <p className="rovers-information">Data de pouso
-                        <span className="rover-information-span"> {opportunity_landing_date}</span>
+                      <p className="rovers-information color-text">Data de pouso
+                        <span className="color-data"> {opportunity_landing_date}</span>
                       </p>
-                      <p className="rovers-information">Status
-                        <span className="rover-information-span"> {translationOpportunity.translations[0].text}</span>
+                      <p className="rovers-information color-text">Status
+                        <span className="color-data"> {translationOpportunity.translations[0].text}</span>
                       </p>
-                      <p className="rovers-information">Data das últimas fotos
-                        <span className="rover-information-span"> {opportunity_max_date}</span>
+                      <p className="rovers-information color-text">Data das últimas fotos
+                        <span className="color-data"> {opportunity_max_date}</span>
                       </p>
-                      <p className="rovers-information">Fotos já tiradas
-                        <span className="rover-information-span"> {manifestOpportunity.photo_manifest.total_photos}</span>
+                      <p className="rovers-information color-text">Fotos já tiradas
+                        <span className="color-data"> {manifestOpportunity.photo_manifest.total_photos}</span>
                       </p>
                     </div>
 
@@ -217,20 +217,20 @@ const PhotoMars = () => {
                 <div className="data-form">
 
                     <div className="rovers-information-container">
-                      <p className="rovers-information">Data de lançamento
-                        <span className="rover-information-span"> {spirit_launch_date}</span>
+                      <p className="rovers-information color-text">Data de lançamento
+                        <span className="color-data"> {spirit_launch_date}</span>
                       </p>
-                      <p className="rovers-information">Data de pouso
-                        <span className="rover-information-span"> {spirit_landing_date}</span>
+                      <p className="rovers-information color-text">Data de pouso
+                        <span className="color-data"> {spirit_landing_date}</span>
                       </p>
-                      <p className="rovers-information">Status
-                        <span className="rover-information-span"> {translationSpirit.translations[0].text}</span>
+                      <p className="rovers-information color-text">Status
+                        <span className="color-data"> {translationSpirit.translations[0].text}</span>
                       </p>
-                      <p className="rovers-information">Data das últimas fotos
-                        <span className="rover-information-span"> {spirit_max_date}</span>
+                      <p className="rovers-information color-text">Data das últimas fotos
+                        <span className="color-data"> {spirit_max_date}</span>
                       </p>
-                      <p className="rovers-information">Fotos já tiradas
-                        <span className="rover-information-span"> {manifestSpirit.photo_manifest.total_photos}</span>
+                      <p className="rovers-information color-text">Fotos já tiradas
+                        <span className="color-data"> {manifestSpirit.photo_manifest.total_photos}</span>
                       </p>
                     </div>
 
