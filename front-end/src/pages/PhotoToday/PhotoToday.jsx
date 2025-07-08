@@ -39,12 +39,12 @@ const PhotoToday = () => {
   return (
     <>
       {loading ? (
-        <main>
+        <main className='main-loading'>
           <Loading></Loading>
         </main>
       ): (
         <main>
-          <div className="container-content margin-containers">
+          <div className="container-content">
 
             <div className="container-photo">
               <h2 className='photo-title'>{translation && translation.translations[0].text}</h2>

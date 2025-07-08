@@ -109,12 +109,12 @@ const Asteroids = () => {
   return (
     <>
       {loading ? (
-        <main>
+        <main className='main-loading'>
           <Loading></Loading>
         </main>
       ): (
         <main>
-          <div className="container-content margin-containers">
+          <div className="container-content">
               <div className="data-asteroids">
                 {asteroids && asteroids.map((asteroid) => (
                   <div className="asteroid" key={asteroid.id}>

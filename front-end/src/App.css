@@ -9,7 +9,9 @@ header{
     color: var(--color5);
 }
 main{
-    min-height: 70vh;
     display: flex;
     flex-direction: column;
+}
+.main-loading{
+    min-height: 70vh;
 }

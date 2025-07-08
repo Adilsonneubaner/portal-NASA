@@ -112,7 +112,7 @@ const PhotoMars = () => {
 
   return (
     <main>
-      <div className="container-content margin-containers">
+      <div className="container-content">
         <form className="container-rovers">
           <div className="rovers-box" id="curiosity">
             Curiosity
