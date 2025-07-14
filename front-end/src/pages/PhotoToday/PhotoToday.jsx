@@ -11,6 +11,7 @@ import {LoadingContext} from '../../context/LoadingContext'
 
 // Components
 import Loading from '../../components/Loading/Loading'
+import InformationCard from '../../components/InformationCard/InformationCard'
 
 const PhotoToday = () => {
   const {loading} = useContext(LoadingContext)
@@ -43,23 +44,13 @@ const PhotoToday = () => {
           <Loading></Loading>
         </main>
       ): (
-        <main>
-          <div className="container-content">
-
-            <div className="container-photo">
-              <h2 className='photo-title'>{translation && translation.translations[0].text}</h2>
-
-              <img src={photo_data.url} alt={photo_data.title} className='photo-of-the-day'/>
-
-              <div className="photo-data">
-                <p>Foto de {photo_date}</p>
-                <p>{photo_data.copyright}</p>
-              </div>
-
-              <p className='about-photo'>{translation && translation.translations[1].text}</p>
-            </div>
-          </div>
-        </main>
+        <InformationCard
+         title={translation ? translation.translations[0].text : null} 
+         photo={photo_data.url} 
+         photoDate={photo_date} 
+         photoCopyright={photo_data.copyright} 
+         about={translation ? translation.translations[1].text : null}
+        />
       )}
     </>
   )

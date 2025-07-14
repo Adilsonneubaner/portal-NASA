@@ -1,0 +1,27 @@
+.container-information-card{
+    max-width: 700px;
+}
+.information-card-title{
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--color3);
+}
+.information-card-photo{
+    max-width: 100%;
+}
+.information-card-data{
+    display: flex;
+    justify-content: space-between;
+}
+.information-card-data p{
+    font-size: .75em;
+    opacity: .5;
+}
+.information-card-about{
+    margin-top: 10px;
+    font-size: .99em;
+    line-height: 1.44em;
+    font-weight: 450;
+    color: var(--color1);
+}
