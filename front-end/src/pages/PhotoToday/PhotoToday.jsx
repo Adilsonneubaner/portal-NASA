@@ -1,5 +1,3 @@
-import './PhotoToday.css'
-
 // Hooks
 import { useGet } from '../../hooks/useGet'
 import { useTranslate } from '../../hooks/useTranslate'
@@ -44,13 +42,17 @@ const PhotoToday = () => {
           <Loading></Loading>
         </main>
       ): (
-        <InformationCard
-         title={translation ? translation.translations[0].text : null} 
-         photo={photo_data.url} 
-         photoDate={photo_date} 
-         photoCopyright={photo_data.copyright} 
-         about={translation ? translation.translations[1].text : null}
-        />
+        <main>
+          <div className="container-content">
+            <InformationCard
+             title={translation ? translation.translations[0].text : null}
+             photo={photo_data.url}
+             photoDate={photo_date}
+             photoCopyright={photo_data.copyright}
+             about={translation ? translation.translations[1].text : null}
+            />
+          </div>
+        </main>
       )}
     </>
   )
