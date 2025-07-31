@@ -29,7 +29,7 @@ const Navbar = () => {
 
     {id: 4, img: techonologies, description: 'Conheça as tecnologias criadas pela NASA e liberadas para uso público', link: '/technologies', name: 'Tecnologias liberadas', idCSS: 'techonologies'},
 
-    {id: 5, img: exoplanets, description: 'Dados sobre planetas fora do sistema solar', link: '/exoplanets', name: 'Exoplanetas', idCSS: 'exoplanets'},
+    // {id: 5, img: exoplanets, description: 'Dados sobre planetas fora do sistema solar', link: '/exoplanets', name: 'Exoplanetas', idCSS: 'exoplanets'},
 
     {id: 6, img: imageBank, description: 'Busque e veja imagens do banco de dados da NASA', link: '/image-bank', name: 'Banco de imagens', idCSS: 'image-bank'}
   ]
