@@ -31,7 +31,7 @@ const Navbar = () => {
 
     {id: 5, img: exoplanets, description: 'Dados sobre planetas fora do sistema solar', link: '/exoplanets', name: 'Exoplanetas', idCSS: 'exoplanets'},
 
-    {id: 6, img: imageBank, description: 'Busque e veja imagens, vídeos e áudios do banco de dados da NASA', link: '/image-bank', name: 'Banco de imagens', idCSS: 'image-bank'}
+    {id: 6, img: imageBank, description: 'Busque e veja imagens do banco de dados da NASA', link: '/image-bank', name: 'Banco de imagens', idCSS: 'image-bank'}
   ]
 
   const [activeIndex, setActiveIndex] = useState(0);

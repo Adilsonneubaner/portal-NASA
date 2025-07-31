@@ -105,7 +105,10 @@ const Technologies = () => {
 
             <div className="container-display-flex">
               {technologies && technologies.map((technologie) => (
-                <InformationCard key={technologie.id} title={technologie.name} photo={technologie.photo} about={technologie.about}/>
+                <InformationCard key={technologie.id}
+                 title={technologie.name} 
+                 photo={technologie.photo} 
+                 about={technologie.about}/>
               ))}
             </div>
 

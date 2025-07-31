@@ -1,0 +1,31 @@
+.form-search{
+    display: flex;
+}
+.input-search{
+    padding: 5px 20px;
+    border: 1px solid black;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+.input-search::placeholder{
+    color: black;
+}
+.button-search{
+    background-color: var(--color3);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 5px 20px;
+}
+.button-search img{
+    width: 30px;
+}
+.margin-top-to-images{
+    margin-top: 80px;
+}
+.container-error{
+    margin-top: 10px;
+}
+.container-error p{
+    font-size: 1.1em;
+    font-weight: 500;
+}
