@@ -13,13 +13,22 @@ const Pagination = ({limit, total, offset, setOffset}) => {
       max_first
     )
 
+    const handleClickButton = (page) => {
+      setOffset((page - 1) * limit)
+
+      window.scrollTo({
+        top: 800,
+        behavior: 'smooth'
+      })
+    }
+
   return (
     <ul className='container-pagination'>
       {Array.from({length: Math.min(max_buttons, pages)})
         .map((_, index) => index + first_page)
         .map((page) => (
           <li key={page}>
-            <button onClick={() => setOffset((page - 1) * limit)} className={page === current? 'button-current' : 'button-pagination'}>{page}</button>
+            <button onClick={() => handleClickButton(page)} className={page === current? 'button-current' : 'button-pagination'}>{page}</button>
           </li>
         ))
       }

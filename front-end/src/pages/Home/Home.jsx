@@ -10,7 +10,7 @@ const Home = () => {
         <div className="content-home">
           <div className="paragraph-home">
             <p>A agência do governo dos Estados Unidos responsável pela pesquisa e desenvolvimento de tecnologias e programas de exoploração espacial, a NASA(National Aeronautics and Space Administration), fornece para uso público algumas de suas informações adquiridas a partir de seus estudos e explorações. Informações essas que para você amante de astronomia, são um prato cheio.</p>
-            <p>Então não perca tempo, venha matar sua sede de curiosidade, e se encantar com algumas images impressionantes.</p>
+            <p>Então não perca tempo, venha matar sua sede de curiosidade, e se encantar com algumas imagens impressionantes.</p>
           </div>
           <img src={nasa} alt={nasa} className='image-home'/>
         </div>

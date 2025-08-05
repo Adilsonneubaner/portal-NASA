@@ -52,7 +52,6 @@ footer{
     transition: .4s;
 }
 #contact-links a:hover{
-    font-size: 1.4em;
     opacity: 10;
 }
 #copy{

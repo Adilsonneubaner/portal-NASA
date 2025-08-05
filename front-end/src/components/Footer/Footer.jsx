@@ -28,9 +28,9 @@ const Footer = () => {
                     <li className='apis'>
                         Techport
                     </li>
-                    <li className='apis'>
+                    {/* <li className='apis'>
                         Exoplanet
-                    </li>
+                    </li> */}
             
                     <li className='apis'>
                         NASA Image and Video Library
