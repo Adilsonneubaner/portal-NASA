@@ -6,7 +6,7 @@ import {LoadingContext} from '../context/LoadingContext'
 export const useTranslate = (text) => {
     const {setLoading} = useContext(LoadingContext)
 
-    const url_back_end = 'http://localhost:3000/translate'
+    const url_back_end = 'https://portal-nasa.onrender.com/translate'
 
     const [translation, setTranslation] = useState('')
 
