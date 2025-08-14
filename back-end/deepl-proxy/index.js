@@ -43,5 +43,5 @@ app.post('/translate', async (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server running PORT: ${port}`)
+    console.log(`Server running PORT: ${port}`) 
 })
