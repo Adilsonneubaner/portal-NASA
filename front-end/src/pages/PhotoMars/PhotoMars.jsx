@@ -146,25 +146,25 @@ const PhotoMars = () => {
                     <div className="data-form">
 
                       <div className="rovers-information-container">
-                        <p className="rovers-information color-text">Data de lançamento
+                        <p className="color-text">Data de lançamento
                           <span className="color-data"> {curiosity_launch_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Data de pouso
+                        <p className="color-text">Data de pouso
                           <span className="color-data"> {curiosity_landing_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Status
+                        <p className="color-text">Status
                           <span className="color-data"> {translationCuriosity.translations[0].text}</span>
                         </p>
-                        <p className="rovers-information color-text">Data das últimas fotos
+                        <p className="color-text">Data das últimas fotos
                           <span className="color-data"> {curiosity_max_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Fotos já tiradas
+                        <p className="color-text">Fotos já tiradas
                           <span className="color-data"> {manifestCuriosity.photo_manifest.total_photos}</span>
                         </p>
                       </div>
 
                       <form onSubmit={(e) => handlePhotos(e, 'curiosity')} className='form-calendar'>
-                        <p className="search-date">Busque fotos por uma data</p>
+                        <p className="search-date">Busque fotos por uma data</p> 
                         <div className="calendar">
                           <input type="date" id="" onChange={(e) => setDate(e.target.value)}/>
                           <i className="bi bi-calendar"></i>
@@ -185,25 +185,25 @@ const PhotoMars = () => {
                     <div className="data-form">
 
                       <div className="rovers-information-container">
-                        <p className="rovers-information color-text">Data de lançamento
+                        <p className="color-text">Data de lançamento
                           <span className="color-data"> {opportunity_launch_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Data de pouso
+                        <p className="color-text">Data de pouso
                           <span className="color-data"> {opportunity_landing_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Status
+                        <p className="color-text">Status
                           <span className="color-data"> {translationOpportunity.translations[0].text}</span>
                         </p>
-                        <p className="rovers-information color-text">Data das últimas fotos
+                        <p className="color-text">Data das últimas fotos
                           <span className="color-data"> {opportunity_max_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Fotos já tiradas
+                        <p className="color-text">Fotos já tiradas
                           <span className="color-data"> {manifestOpportunity.photo_manifest.total_photos}</span>
                         </p>
                       </div>
 
                       <form onSubmit={(e) => handlePhotos(e, 'opportunity')} className='form-calendar'>
-                        <p className="search-date">Busque fotos por uma data</p>
+                        <p className="search-date">Busque fotos por uma data</p> 
                         <div className="calendar">
                           <input type="date" id="" onChange={(e) => setDate(e.target.value)}/>
                           <i className="bi bi-calendar"></i>
@@ -224,25 +224,25 @@ const PhotoMars = () => {
                   <div className="data-form">
 
                       <div className="rovers-information-container">
-                        <p className="rovers-information color-text">Data de lançamento
+                        <p className="color-text">Data de lançamento
                           <span className="color-data"> {spirit_launch_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Data de pouso
+                        <p className="color-text">Data de pouso
                           <span className="color-data"> {spirit_landing_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Status
+                        <p className="color-text">Status
                           <span className="color-data"> {translationSpirit.translations[0].text}</span>
                         </p>
-                        <p className="rovers-information color-text">Data das últimas fotos
+                        <p className="color-text">Data das últimas fotos
                           <span className="color-data"> {spirit_max_date}</span>
                         </p>
-                        <p className="rovers-information color-text">Fotos já tiradas
+                        <p className="color-text">Fotos já tiradas
                           <span className="color-data"> {manifestSpirit.photo_manifest.total_photos}</span>
                         </p>
                       </div>
 
                       <form onSubmit={(e) => handlePhotos(e, 'spirit')} className='form-calendar'>
-                        <p className="search-date">Busque fotos por uma data</p>
+                        <p className="search-date">Busque fotos por uma data</p> 
                         <div className="calendar">
                           <input type="date" id="" onChange={(e) => setDate(e.target.value)}/>
                           <i className="bi bi-calendar"></i>

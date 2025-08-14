@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-import {useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 // Images
 import photoDay from '../../images/foto-do-dia.png'
@@ -10,13 +10,14 @@ import techonologies from '../../images/tecnologias.jpg'
 import exoplanets from '../../images/exoplanetas.jpg'
 import imageBank from '../../images/banco-de-imagens.webp'
 
-// Swiper
-import {Swiper, SwiperSlide} from 'swiper/react'
-import 'swiper/css'
-import {Pagination} from 'swiper/modules'
-
 // Router 
 import { Link} from 'react-router-dom'
+
+
+// Slide para Dispositivos de tela grande
+import SlideDesktop from '../SlideDesktop/SlideDesktop'
+//Slide para Dispositivos de tela pequena
+import SlideMobile from '../SlideMobile/SlideMobile'
 
 const Navbar = () => {
 
@@ -34,8 +35,11 @@ const Navbar = () => {
     {id: 6, img: imageBank, description: 'Busque e veja imagens do banco de dados da NASA', link: '/image-bank', name: 'Banco de imagens', idCSS: 'image-bank'}
   ]
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
+  const [width, setWidth] = useState(window.innerWidth)
+
+  window.addEventListener('resize', () => {
+    setWidth(window.innerWidth)
+  })
 
   return (
     <header>
@@ -44,46 +48,11 @@ const Navbar = () => {
       </div>
 
       <div>
-        <Swiper
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-          pagination={{
-            el: '.pagination-links',
-            clickable:true
-          }}
-        >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id}>
-
-              <div className="background-slide" id={slide.idCSS} style={{
-                backgroundImage: `url(${slide.img})`
-              }}>
-
-                <div className="slide">
-
-                  <p>{slide.description}</p>
-                  <Link to={`${slide.link}`} className='buttons'>Ver aqui</Link>
-
-                </div>
-
-              </div>
-
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-          <div>
-            <ul className='pagination-links'>
-              {slides.map((slide, index) => (
-                <li
-                key={slide.id}
-                onClick={() => swiperRef.current?.slideTo(index)}
-                className={`pagination ${index === activeIndex? 'pagination-active' : ''}`}>
-                  {slide.name}
-                </li>
-              ))}
-            </ul>
-          </div>
+        {width < 750 ? 
+          <SlideMobile slides={slides}/>
+        :
+          <SlideDesktop slides={slides}/>
+        }
       </div>
     </header>
   )

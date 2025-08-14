@@ -44,8 +44,9 @@
 .pagination-links{
     background-color: var(--color1);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 0 30px;
 }
 .pagination{
     padding: 15px 0;
@@ -56,4 +57,16 @@
 .pagination-active{
     font-weight: 700;
     font-size: .87em;
+}
+
+@media(width < 750px){
+    .pagination-links{
+        padding: 10px;
+    }
+    .pagination{
+        font-size: .7em;
+    }
+    .pagination-active{
+        font-size: .78em;
+    }
 }
