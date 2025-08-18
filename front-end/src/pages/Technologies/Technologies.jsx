@@ -1,9 +1,10 @@
 import './Technologies.css'
 
 // Hooks
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { useGet } from '../../hooks/useGet'
 import { useTranslate } from '../../hooks/useTranslate'
+import {useScrollLoad} from '../../hooks/useScrollLoad'
 
 // Context
 import { LoadingContext } from '../../context/LoadingContext'
@@ -91,6 +92,11 @@ const Technologies = () => {
   ] : 
   null
 
+  // Scroll com load
+  const load = useRef()
+
+  useScrollLoad(load)
+
 
   return (
     <>
@@ -100,7 +106,7 @@ const Technologies = () => {
         </main>
       ) : (
         <main>
-          <div className="container-content">
+          <div className="container-content" ref={load}>
             <h1>Conheça algumas tecnologias criadas pela NASA</h1>
 
             <div className="container-display-flex">

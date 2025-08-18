@@ -1,8 +1,9 @@
 // Hooks
 import { useGet } from '../../hooks/useGet'
 import { useTranslate } from '../../hooks/useTranslate'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { useTranscribedDate } from '../../hooks/useTranscribedDate'
+import { useScrollLoad } from '../../hooks/useScrollLoad'
 
 // Context
 import {LoadingContext} from '../../context/LoadingContext'
@@ -34,6 +35,10 @@ const PhotoToday = () => {
     null
   )
 
+  // Scroll com load
+  const load = useRef()
+
+  useScrollLoad(load)
 
   return (
     <>
@@ -43,7 +48,7 @@ const PhotoToday = () => {
         </main>
       ): (
         <main>
-          <div className="container-content">
+          <div className="container-content" ref={load}>
             <InformationCard
              title={translation ? translation.translations[0].text : null}
              photo={photo_data.url}

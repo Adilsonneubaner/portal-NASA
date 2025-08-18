@@ -2,9 +2,10 @@ import './PhotoMars.css'
 
 // Hooks
 import {useGet} from '../../hooks/useGet'
-import { useContext, useState } from 'react'
+import { useContext, useState, useRef } from 'react'
 import { useTranslate } from '../../hooks/useTranslate'
 import { useTranscribedDate } from '../../hooks/useTranscribedDate'
+import { useScrollLoad } from '../../hooks/useScrollLoad'
 
 // Context
 import { LoadingContext } from '../../context/LoadingContext'
@@ -110,6 +111,11 @@ const PhotoMars = () => {
 
   }
 
+  // Scroll com load
+  const load = useRef()
+  
+  useScrollLoad(load)
+
   return (
     <>
       {loading ? (
@@ -119,7 +125,7 @@ const PhotoMars = () => {
       ): (
         
       <main>
-        <div className="container-content">
+        <div className="container-content" ref={load}>
           <form className="container-rovers">
             <div className="rovers-box" id="curiosity">
               Curiosity

@@ -3,8 +3,9 @@ import './Images.css'
 import search_gif from '../../images/search.gif'
 
 // Hooks
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import { useGet } from '../../hooks/useGet'
+import { useScrollLoad } from '../../hooks/useScrollLoad'
 
 // Context
 import { LoadingContext } from '../../context/LoadingContext'
@@ -63,6 +64,11 @@ const Images = () => {
     }
     
   }
+
+  // Scroll com load
+  const load = useRef()
+
+  useScrollLoad(load)
   
   return (
     <>
@@ -71,7 +77,7 @@ const Images = () => {
           <Loading/>
         </main>
       ) : (
-        <main className='container-content' id='top-link'>
+        <main className='container-content' id='top-link' ref={load}>
 
           <h1>O que deseja ver?</h1>
 

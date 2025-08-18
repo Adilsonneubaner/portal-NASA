@@ -1,9 +1,10 @@
 import './Asteroids.css'
 
 // Hooks
-import { useContext, useState } from 'react'
+import { useContext, useState, useRef } from 'react'
 import { useTranscribedDate } from '../../hooks/useTranscribedDate'
 import {useGet} from '../../hooks/useGet'
+import { useScrollLoad } from '../../hooks/useScrollLoad'
 
 // Context
 import {LoadingContext} from '../../context/LoadingContext'
@@ -106,6 +107,11 @@ const Asteroids = () => {
   setSelected(e.target.value)
  }
 
+  // Scroll com load
+  const load = useRef()
+
+  useScrollLoad(load)
+
   return (
     <>
       {loading ? (
@@ -114,7 +120,7 @@ const Asteroids = () => {
         </main>
       ): (
         <main>
-          <div className="container-content">
+          <div className="container-content" ref={load}>
               <div className="data-asteroids">
                 {asteroids && asteroids.map((asteroid) => (
                   <div className="asteroid" key={asteroid.id}>
