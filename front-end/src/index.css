@@ -56,3 +56,9 @@ input[type="radio"], input[type="checkbox"]{
     flex-direction: column;
     gap: 80px;
 }
+
+@media(width < 750px){
+    .container-content{
+        margin: 15vh 5vw;
+    }
+}
