@@ -69,4 +69,7 @@
     .pagination-active{
         font-size: .78em;
     }
+    .background-slide{
+        height: 45vh;
+    }
 }
