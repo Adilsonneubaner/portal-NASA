@@ -1,7 +1,7 @@
 import './Asteroids.css'
 
 // Hooks
-import { useContext, useState, useRef } from 'react'
+import { useContext, useState, useRef, useEffect } from 'react'
 import { useTranscribedDate } from '../../hooks/useTranscribedDate'
 import {useGet} from '../../hooks/useGet'
 import { useScrollLoad } from '../../hooks/useScrollLoad'
@@ -14,7 +14,7 @@ import Loading from '../../components/Loading/Loading'
 
 const Asteroids = () => {
 
-  const {loading} = useContext(LoadingContext)
+  const {loading, setLoading} = useContext(LoadingContext)
 
   const api_key_nasa = 'XdPKGfLWgyAVR6bvL6vDO6etSOec8xJknUoehHmK'
 
@@ -98,6 +98,14 @@ const Asteroids = () => {
     id: Phaethon3200.id
   }
  ]
+
+ useEffect(() => {
+  asteroids.map((asteroid) => {
+    if (asteroid.name && asteroid.first_observation_date && asteroid.last_observation_date) {
+      setLoading(false)
+    }
+  })
+ }, [asteroids])
 
  const handleSelected = (e) => {
   if(e.target.value === selected){

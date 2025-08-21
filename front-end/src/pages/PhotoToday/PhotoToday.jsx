@@ -1,7 +1,7 @@
 // Hooks
 import { useGet } from '../../hooks/useGet'
 import { useTranslate } from '../../hooks/useTranslate'
-import { useContext, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { useTranscribedDate } from '../../hooks/useTranscribedDate'
 import { useScrollLoad } from '../../hooks/useScrollLoad'
 
@@ -13,7 +13,7 @@ import Loading from '../../components/Loading/Loading'
 import InformationCard from '../../components/InformationCard/InformationCard'
 
 const PhotoToday = () => {
-  const {loading} = useContext(LoadingContext)
+  const {loading, setLoading} = useContext(LoadingContext)
 
   const api_key_nasa = 'XdPKGfLWgyAVR6bvL6vDO6etSOec8xJknUoehHmK'
 
@@ -34,6 +34,12 @@ const PhotoToday = () => {
     [photo_data.title, photo_data.explanation] : 
     null
   )
+  
+  useEffect(() => {
+    if (photo_date && translation) {
+      setLoading(false)
+    }
+  }, [photo_date, translation])
 
   // Scroll com load
   const load = useRef()

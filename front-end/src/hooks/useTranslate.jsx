@@ -31,8 +31,6 @@ export const useTranslate = (text) => {
             const data = await res.json()
             setTranslation(data)
 
-            setLoading(false)
-
           } catch (error) {
             console.log(error)
           }

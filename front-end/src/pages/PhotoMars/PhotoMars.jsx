@@ -2,7 +2,7 @@ import './PhotoMars.css'
 
 // Hooks
 import {useGet} from '../../hooks/useGet'
-import { useContext, useState, useRef } from 'react'
+import { useContext, useState, useRef, useEffect } from 'react'
 import { useTranslate } from '../../hooks/useTranslate'
 import { useTranscribedDate } from '../../hooks/useTranscribedDate'
 import { useScrollLoad } from '../../hooks/useScrollLoad'
@@ -57,6 +57,28 @@ const PhotoMars = () => {
   const {translation: translationOpportunity} = useTranslate(manifestOpportunity? [manifestOpportunity.photo_manifest.status] : null)
 
   const {translation: translationSpirit} = useTranslate(manifestSpirit? [manifestSpirit.photo_manifest.status] : null)
+
+  // Array de depedências para Loading
+  const allDeps = [
+    curiosity_landing_date,
+    curiosity_launch_date,
+    curiosity_max_date,
+    opportunity_landing_date,
+    opportunity_launch_date,
+    opportunity_max_date,
+    spirit_landing_date,
+    spirit_launch_date,
+    spirit_max_date,
+    translationCuriosity,
+    translationOpportunity,
+    translationSpirit
+  ]
+
+  useEffect(() => {
+    if(allDeps.every(Boolean)) {
+      setLoading(false)
+    }
+  }, [allDeps])
 
 
   const [selected, setSelected] = useState('')

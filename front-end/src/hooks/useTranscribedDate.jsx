@@ -17,8 +17,7 @@ export const useTranscribedDate = (date) => {
         const formated = objetctDate.toLocaleDateString('pt-BR')
 
         setTranscribedDate(formated)
-
-        setLoading(false)
+        
     },[date])
     
     return {transcribedDate}

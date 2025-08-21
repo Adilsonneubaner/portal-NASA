@@ -1,7 +1,7 @@
 import './Technologies.css'
 
 // Hooks
-import { useContext, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { useGet } from '../../hooks/useGet'
 import { useTranslate } from '../../hooks/useTranslate'
 import {useScrollLoad} from '../../hooks/useScrollLoad'
@@ -17,7 +17,7 @@ const Technologies = () => {
 
   const api_key_nasa = 'XdPKGfLWgyAVR6bvL6vDO6etSOec8xJknUoehHmK'
   
-  const{loading} = useContext(LoadingContext)
+  const{loading, setLoading} = useContext(LoadingContext)
 
   const {data: LEW_TOPS_118} = useGet(`https://api.nasa.gov/techtransfer/patent/?LEW-TOPS-118&api_key=${api_key_nasa}`)
   const {data: LAR_TOPS_351} = useGet(`https://api.nasa.gov/techtransfer/patent/?LAR-TOPS-351&api_key=${api_key_nasa}`)
@@ -91,6 +91,13 @@ const Technologies = () => {
     }
   ] : 
   null
+
+
+  useEffect(() => {
+    if (technologies) {
+      setLoading(false)
+    }
+  },[technologies])
 
   // Scroll com load
   const load = useRef()
