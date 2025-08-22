@@ -44,8 +44,21 @@ const Images = () => {
 
     setLoading(true)
 
+    // Traduzindo pesquisa do usuário para EN
+    const res = await fetch(
+    `https://api.mymemory.translated.net/get?q=${query}&langpair=pt|en`
+    )
+
+    const data = await res.json()
+    
+    const queryTranslate = data.responseData.translatedText
+
+    console.log(queryTranslate)
+
     try {
-      const res = await fetch(`https://images-api.nasa.gov/search?q=${query}`)
+
+      console.log(queryTranslate)
+      const res = await fetch(`https://images-api.nasa.gov/search?q=${queryTranslate}`)
 
       const data = await res.json()
 
