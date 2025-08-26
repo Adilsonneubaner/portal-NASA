@@ -2,20 +2,11 @@ import './Home.css'
 
 import nasa from '../../images/logo-nasa.jpg'
 
-// Hooks
-import { useRef } from 'react'
-import {useScrollLoad} from '../../hooks/useScrollLoad'
-
 const Home = () => {
-
-  // Scroll com load
-  const load = useRef()
-
-  useScrollLoad(load)
 
   return (
     <main>
-      <div className="container-content" ref={load}>
+      <div className="container-content">
         <h1>DESLUMBRE O UNIVERSO E SUAS MARAVILHAS</h1>
         <div className="content-home">
           <div className="paragraph-home">
