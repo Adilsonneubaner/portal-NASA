@@ -18,22 +18,19 @@ app.post('/translate', async (req, res) => {
     }
 
     try {
-        const params = new URLSearchParams()
+        const textArray = Array.isArray(text) ? text : [text]
 
-        if(Array.isArray(text)){
-            text.forEach(t => params.append('text', t))
-        } else{
-            params.append('text', text)
+        const body = {
+            text: textArray,
+            target_lang: target_lang
         }
 
-        params.append('target_lang', target_lang)
-        params.append('auth_key', process.env.DEEPL_API_KEY)
-
-        const response = await axios.post(url, params.toString(), {
+        const response = await axios.post(url, body, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Authorization': `DeepL-Auth-Key ${process.env.DEEPL_API_KEY}`,
+                'Content-Type': 'application/json'
             }
-        })
+        });
 
         res.json(response.data)
     } catch (error) {
