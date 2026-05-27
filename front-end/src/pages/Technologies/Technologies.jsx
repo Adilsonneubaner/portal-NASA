@@ -19,11 +19,12 @@ const Technologies = () => {
   
   const{loading, setLoading} = useContext(LoadingContext)
 
-  const {data: LEW_TOPS_118} = useGet(`https://api.nasa.gov/techtransfer/patent/?LEW-TOPS-118&api_key=${api_key_nasa}`)
-  const {data: LAR_TOPS_351} = useGet(`https://api.nasa.gov/techtransfer/patent/?LAR-TOPS-351&api_key=${api_key_nasa}`)
-  const {data: TOP2_295} = useGet(`https://api.nasa.gov/techtransfer/patent/?TOP2-295&api_key=${api_key_nasa}`)
-  const {data: MSC_TOPS_96} = useGet(`https://api.nasa.gov/techtransfer/patent/?MSC-TOPS-96&api_key=${api_key_nasa}`)
-  const {data: KSC_TOPS_1} = useGet(`https://api.nasa.gov/techtransfer/patent/?KSC-TOPS-1&api_key=${api_key_nasa}`)
+  // proxy para sanar erro de cors 'api-nasa-technology'
+  const {data: LEW_TOPS_118} = useGet(`/api-nasa-technology/api/api/patent/LEW-TOPS-118`)
+  // const {data: LAR_TOPS_351} = useGet(`api-nasa-technology/api/api/patent/LAR-TOPS-351`)
+  const {data: TOP2_295} = useGet(`api-nasa-technology/api/api/patent/TOP2-295`)
+  const {data: MSC_TOPS_96} = useGet(`api-nasa-technology/api/api/patent/MSC-TOPS-96`)
+  const {data: KSC_TOPS_1} = useGet(`api-nasa-technology/api/api/patent/KSC-TOPS-1`)
 
   // Translations
   const {translation: translationLEW_TOPS_118} = useTranslate(LEW_TOPS_118 ?
@@ -31,10 +32,10 @@ const Technologies = () => {
     null
   )
 
-  const {translation: translationLAR_TOPS_351} = useTranslate(LAR_TOPS_351 ?
-    [LAR_TOPS_351.results[0][2], LAR_TOPS_351.results[0][3]] : 
-    null
-  )
+  // const {translation: translationLAR_TOPS_351} = useTranslate(LAR_TOPS_351 ?
+  //   [LAR_TOPS_351.results[0][2], LAR_TOPS_351.results[0][3]] : 
+  //   null
+  // )
 
   const {translation: translationTOP2_295} = useTranslate(TOP2_295 ?
     [TOP2_295.results[0][2], TOP2_295.results[0][3]] : 
@@ -54,7 +55,7 @@ const Technologies = () => {
 
   const technologies =
    translationLEW_TOPS_118 && 
-   translationLAR_TOPS_351 && 
+  //  translationLAR_TOPS_351 && 
    translationTOP2_295 && 
    translationMSC_TOPS_96 && 
    translationKSC_TOPS_1 ? 
@@ -65,12 +66,12 @@ const Technologies = () => {
       about: translationLEW_TOPS_118.translations[1].text,
       photo: LEW_TOPS_118.results[0][10] 
     },
-    {
-      id: LAR_TOPS_351.results[0][0],
-      name: translationLAR_TOPS_351.translations[0].text,
-      about: translationLAR_TOPS_351.translations[1].text,
-      photo: LAR_TOPS_351.results[0][10]  
-    },
+    // {
+    //   id: LAR_TOPS_351.results[0][0],
+    //   name: translationLAR_TOPS_351.translations[0].text,
+    //   about: translationLAR_TOPS_351.translations[1].text,
+    //   photo: LAR_TOPS_351.results[0][10]  
+    // },
     {
       id: TOP2_295.results[0][0],
       name: translationTOP2_295.translations[0].text,
